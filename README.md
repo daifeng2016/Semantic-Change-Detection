@@ -1,2 +1,2 @@
 # Semantic-Change-Detection
-This repository is for semantic change detection.
+This repository is for semantic change detection. Code is coming soon...

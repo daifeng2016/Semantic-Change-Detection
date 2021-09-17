@@ -1,0 +1,123 @@
+{
+  "exp_name": "SceneCD",
+  "model":"MRCD",
+  "patch_size":512,
+  "dataset_name": "sensetime",
+
+  "data_dir": "D:\\TestData\\SenseTime\\change_detection_train\\train/train90New",
+
+  "val_proportion": 0.1,
+  "iter_per_epoch": 2000,
+  "ramp_up": 1.0,
+  "unsupervised_w": 30,
+  "batch_size": 4,
+  "num_worker": 4,
+  "mode": "Train",
+  "is_train": true,
+  "ds": 1,
+
+  "network_G_CD": {
+    "which_model_G": "EDCls_UNet2_New2",
+    "multi_outputs": true,
+    "in_c": 3,
+    "out_nc": 7,
+    "nf": 64,
+    "use_att": true,
+    "use_dblock": false,
+    "att_mode": "BAM",
+    "backbone": "resnet34",
+    "use_DS": false,
+    "diff_mode": "diff",
+    "act_mode": "relu",
+    "dblock_type": "AS",
+    "use_se": false,
+    "se_block": "BAM",
+    "training_mode": true,
+    "ASPP_type": "AS",
+    "model_head": "pspnet",
+    "backbone": "hrnet_w40",
+    "lightweight": true,
+    "pretrained": true
+
+  },
+
+
+  "network_D": {
+    "which_model_D": "discriminator_fc_pix"
+    , "norm_type": "batch"
+    , "act_type": "leakyrelu"
+    , "mode": "CNA"
+    , "nf": 128
+    , "in_nc": 3,
+    "in_nc1": 5,
+    "out_nc": 3
+  },
+
+   "train": {
+    "lr_G": 1e-4
+    , "weight_decay_G":1e-5
+    , "momentum": 0.9
+    ,"weight_decay_G_grad": 0
+    , "beta1_G": 0.9
+    , "beta1_G_grad": 0.9
+    , "lr_D": 1e-4
+    , "weight_decay_D": 0
+    , "beta1_D": 0.9
+    , "lr_scheme": "CosineLR"
+    , "lr_steps": [20000, 50000,100000,150000]
+    , "lr_gamma": 0.5
+    , "pixel_criterion": "l1"
+    , "pixel_weight": 1e-2
+    , "manual_seed": 9
+    , "niter": 2e5
+    , "val_iter": 1e3,
+     "D_update_ratio": 1,
+     "G_update_ratio": 1,
+     "D_init_iters": 0,
+     "val_epoch": 1,
+     "nepoch": 30,
+     "warmup_epoch": 4,
+     "fine_tune": false,
+     "use_DS": true,
+     "is_adv_train": false,
+     "epsion": 5e-3,
+     "ita": 2,
+     "alpha": 2,
+     "beta": 0.5,
+     "gamma": 1,
+     "mode": "supervised",
+     "drop_rate": 0.1,
+
+     "class_weight": [0.01,3.0,1.0,1.0,1.0,1.0,9.0],
+     "ce_weight": 2.0,
+     "use_rgb255": false,
+     "use_label_smooth": false,
+     "use_CatOut": false,
+     "cat_mode": "cat_feat",
+     "use_progressive_resize": false,
+     "use_se": true,
+     "use_cos_ensemble": false,
+     "cos_cycle": 3,
+     "use_MC6": true,
+     "use_onehot_loss": false,
+
+     "use_bicHR": false,
+     "use_SR": true
+
+   },
+
+  "logger": {
+    "print_freq": 2,
+    "save_checkpoint_freq": 5e3,
+    "save_epoch": 20,
+    "save_iter": 5e4
+  },
+  "train_resume": {
+    "use_resume":false,
+    "pretrain_model_G": "DeepLab_resnet_pretrained_init-f81d91e8.pth",
+
+    "pre_epoch": 10,
+    "pre_iter": 100
+  }
+
+}

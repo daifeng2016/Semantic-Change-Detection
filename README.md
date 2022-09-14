@@ -25,7 +25,7 @@ datasets, which demonstrates the effectiveness and superiority of the proposed m
 ## Datasets
 The two datastes have been uploaded onto Baidu Netdisk, which are available at [SCD Datasets](https://pan.baidu.com/s/1FBJ3yMSkr9wTN0FMqrNEwA)  Password：rqll
 
-The 2006 images of HRSCD can be found at images_2006(https://ln2.sync.com/dl/223ab7c40/5m26suqy-i2myui48-969qutva-eszpfgq2)
+The 2006 images of HRSCD can be found at [images_2006](https://ln2.sync.com/dl/223ab7c40/5m26suqy-i2myui48-969qutva-eszpfgq2)
 
 
 ## Citation
